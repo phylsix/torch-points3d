@@ -118,7 +118,7 @@ class GridSampling3D:
         if "batch" not in data:
             cluster = grid_cluster(coords, torch.tensor([1, 1, 1]))
         else:
-            cluster = voxel_grid(coords, data.batch, 1)
+            cluster = voxel_grid(coords, 1, data.batch)
         cluster, unique_pos_indices = consecutive_cluster(cluster)
 
         data = group_data(data, cluster, unique_pos_indices, mode=self._mode)
@@ -167,7 +167,7 @@ class SaveOriginalPosId:
 
 
 class ElasticDistortion:
-    """Apply elastic distortion on sparse coordinate space. First projects the position onto a 
+    """Apply elastic distortion on sparse coordinate space. First projects the position onto a
     voxel grid and then apply the distortion to the voxel grid.
 
     Parameters

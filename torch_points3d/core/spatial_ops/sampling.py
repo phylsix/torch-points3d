@@ -72,7 +72,7 @@ class GridSampler(BaseSampler):
         if len(pos.shape) != 2:
             raise ValueError("This class is for sparse data and expects the pos tensor to be of dimension 2")
 
-        pool = voxel_grid(pos, batch, self._subsampling_param)
+        pool = voxel_grid(pos, self._subsampling_param, batch)
         pool, perm = consecutive_cluster(pool)
         batch = pool_batch(perm, batch)
         if x is not None:

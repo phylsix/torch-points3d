@@ -16,9 +16,9 @@ class Pair(Data):
             pos_target=None,
             **kwargs,
     ):
-        self.__data_class__ = Data
         super(Pair, self).__init__(x=x, pos=pos,
                                    x_target=x_target, pos_target=pos_target, **kwargs)
+        self.__data_class__ = Data
 
 
     @classmethod

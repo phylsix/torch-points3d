@@ -62,7 +62,7 @@ class UnetMSparseConv3d(nn.Module):
 
     def _prepare_data(self, data):
         coords = torch.round((data.pos) / self._grid_size).long()
-        cluster = voxel_grid(coords, data.batch, 1)
+        cluster = voxel_grid(coords, 1, data.batch)
         cluster, unique_pos_indices = consecutive_cluster(cluster)
 
         coords = coords[unique_pos_indices]
