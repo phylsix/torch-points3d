@@ -133,8 +133,8 @@ def teaser_pp_registration(
 
     solution = solver.getSolution()
     T_res = torch.eye(4, device=xyz.device)
-    T_res[:3, :3] = torch.from_numpy(solution.rotation).to(xyz.device)
-    T_res[:3, 3] = torch.from_numpy(solution.translation).to(xyz.device)
+    T_res[:3, :3] = torch.from_numpy(np.array(solution.rotation)).to(xyz.device)
+    T_res[:3, 3] = torch.from_numpy(np.array(solution.translation)).to(xyz.device)
     return T_res
 
 

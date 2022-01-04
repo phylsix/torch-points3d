@@ -94,16 +94,16 @@ class GeneralFragment(object):
         """
         match = np.load(osp.join(self.path_match, "matches{:06d}.npy".format(idx)), allow_pickle=True).item()
         if not self.self_supervised:
-            data_source = torch.load(match["path_source"]).to(torch.float)
-            data_target = torch.load(match["path_target"]).to(torch.float)
+            data_source = torch.load(match["path_source"])
+            data_target = torch.load(match["path_target"])
             new_pair = torch.from_numpy(match["pair"])
         else:
             if random.random() < 0.5:
-                data_source_o = torch.load(match["path_source"]).to(torch.float)
-                data_target_o = torch.load(match["path_source"]).to(torch.float)
+                data_source_o = torch.load(match["path_source"])
+                data_target_o = torch.load(match["path_source"])
             else:
-                data_source_o = torch.load(match["path_target"]).to(torch.float)
-                data_target_o = torch.load(match["path_target"]).to(torch.float)
+                data_source_o = torch.load(match["path_target"])
+                data_target_o = torch.load(match["path_target"])
             data_source, data_target, new_pair = self.unsupervised_preprocess(data_source_o, data_target_o)
 
         return data_source, data_target, new_pair
