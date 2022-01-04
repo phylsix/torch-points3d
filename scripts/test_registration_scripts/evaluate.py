@@ -208,12 +208,12 @@ def run(model: BaseModel, dataset: BaseDataset, device, cfg):
     print(df.groupby("name_scene").mean())
 
 
-@hydra.main(config_path="../../conf/config.yaml")
+@hydra.main(config_path="../../conf", config_name="config")
 def main(cfg):
     OmegaConf.set_struct(cfg, False)
 
     # Get device
-    device = torch.device("cuda" if (torch.cuda.is_available() and cfg.training.cuda) else "cpu")
+    device = torch.device("cuda" if (torch.cuda.is_available() and cfg.training.cuda > -1) else "cpu")
     log.info("DEVICE : {}".format(device))
 
     # Enable CUDNN BACKEND
