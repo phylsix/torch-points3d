@@ -8,7 +8,7 @@ is_patch: False
 max_dist_overlap: 0.05
 min_overlap_ratio: 0.3
 first_subsampling: 0.02
-
+use_fps: false
 self_supervised: true
 min_size_block: 1.5
 max_size_block: 2

@@ -37,7 +37,7 @@ wandb:
   project: registration
   log: True
   notes:
-  name: humanpose1
+  name: wsi
   public: True # It will be display the model within wandb log, else not.
 
   # parameters for TensorBoard Visualization
