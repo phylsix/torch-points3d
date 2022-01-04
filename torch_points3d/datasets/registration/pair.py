@@ -121,9 +121,9 @@ class PairBatch(Pair):
         r"""
         Pair batch for message passing
         """
+        super(PairBatch, self).__init__(**kwargs)
         self.batch_target = batch_target
         self.batch = None
-        super(PairBatch, self).__init__(**kwargs)
         self.__data_class__ = Batch
 
     @staticmethod
